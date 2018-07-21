@@ -2,6 +2,7 @@ import { PluginProps } from 'invest-plugin'
 import { isEqual } from 'lodash-es'
 import * as React from 'react'
 import DataContainer from './DataContainer'
+import View from './View'
 
 type OwnProps = {}
 
@@ -22,7 +23,7 @@ class App extends React.Component<Props, State> {
     return (
       <div>
         <DataContainer variables={{}}>
-          <p>Hello world</p>
+          <View />
         </DataContainer>
       </div>
     )
