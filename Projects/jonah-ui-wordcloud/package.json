@@ -18,7 +18,8 @@
     "react-dom": "^16.0.0",
     "react-scripts-ts": "2.16.0",
     "semantic-ui-offline": "^2.3.2",
-    "typescript": "~2.9.2"
+    "typescript": "~2.9.2",
+    "react-wordcloud": "https://github.com/chrisrzhou/react-wordcloud.git"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts-ts start",
