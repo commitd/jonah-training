@@ -4,6 +4,7 @@ import { Response } from './DataContainer'
 
 type OwnProps = {
   data?: Response
+  onChangeWord?(word: string): void
 }
 
 type Props = OwnProps
@@ -26,8 +27,14 @@ export default class View extends React.Component<Props> {
 
     return (
       <div style={{ width: '100%', height: 600 }}>
-        <ReactWordCloud words={words2} wordCountKey="value" wordKey="word" />
+        <ReactWordCloud words={words2} wordCountKey="value" wordKey="word" onWordClick={this.handleClick} />
       </div>
     )
+  }
+
+  private handleClick = (d: { word: string }) => {
+    if (this.props.onChangeWord) {
+      this.props.onChangeWord(d.word)
+    }
   }
 }
