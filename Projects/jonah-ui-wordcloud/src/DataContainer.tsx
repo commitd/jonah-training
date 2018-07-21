@@ -1,7 +1,9 @@
 import gql from 'graphql-tag'
 import { createDataContainer } from 'invest-components'
 
-type Variables = {}
+type Variables = {
+  query: string
+}
 
 export interface Response {
   corpus: {
@@ -17,9 +19,9 @@ export interface Response {
 }
 
 const QUERY = gql`
-  query CorpusInfo {
+  query CorpusInfo($query: String!) {
     corpus(id: "baleen_mongo") {
-      searchDocuments(query: { content: "england" }) {
+      searchDocuments(query: { content: $query }) {
         hits(size: 10) {
           words(minCount: 2) {
             word

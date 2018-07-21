@@ -33,7 +33,7 @@ class App extends React.Component<Props, State> {
           <Form.Input placeholder="Search" value={query} onChange={this.handleChange} />
         </Form>
         {query && (
-          <DataContainer variables={{}}>
+          <DataContainer variables={{ query: query }}>
             <View />
           </DataContainer>
         )}
