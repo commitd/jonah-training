@@ -1,0 +1,8 @@
+{
+  "id": "jonah-wordcloud",
+  "name": "Word cloud",
+  "description": "Word cloud for a topic",
+  "icon": "code",
+  "roles": [],
+  "actions": []
+}
