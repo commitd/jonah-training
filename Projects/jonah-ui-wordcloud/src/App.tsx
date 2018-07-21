@@ -1,6 +1,7 @@
 import { PluginProps } from 'invest-plugin'
 import { isEqual } from 'lodash-es'
 import * as React from 'react'
+import { Form, InputOnChangeData } from 'semantic-ui-react'
 import DataContainer from './DataContainer'
 import View from './View'
 
@@ -8,10 +9,14 @@ type OwnProps = {}
 
 type Props = OwnProps & PluginProps
 
-type State = {}
+type State = {
+  query: string
+}
 
 class App extends React.Component<Props, State> {
-  state = {}
+  state = {
+    query: ''
+  }
 
   componentWillReceiveProps(nextProps: Props) {
     if (this.props.action !== nextProps.action || !isEqual(this.props.payload, nextProps.payload)) {
@@ -20,14 +25,23 @@ class App extends React.Component<Props, State> {
   }
 
   render() {
+    const { query } = this.state
+
     return (
       <div>
-        <DataContainer variables={{}}>
-          <View />
-        </DataContainer>
+        <Form>
+          <Form.Input placeholder="Search" value={query} onChange={this.handleChange} />
+        </Form>
+        {query && (
+          <DataContainer variables={{}}>
+            <View />
+          </DataContainer>
+        )}
       </div>
     )
   }
+
+  private handleChange = (e: React.SyntheticEvent, d: InputOnChangeData) => this.setState({ query: d.value })
 
   private onAction = (action?: string, payload?: {}) => {
     // Implement to deal with new action requests
