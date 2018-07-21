@@ -34,11 +34,17 @@ class App extends React.Component<Props, State> {
         </Form>
         {query && (
           <DataContainer variables={{ query: query }}>
-            <View />
+            <View onChangeWord={this.handleWordChange} />
           </DataContainer>
         )}
       </div>
     )
+  }
+
+  private handleWordChange = (w: string) => {
+    this.setState({
+      query: w
+    })
   }
 
   private handleChange = (e: React.SyntheticEvent, d: InputOnChangeData) => this.setState({ query: d.value })
